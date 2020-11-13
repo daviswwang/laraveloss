@@ -23,13 +23,14 @@ class LaravelOSS
     }
 
 
-    public function publicUpload($fileName, $filePath, $options = '', $bucketName = 'ingym-pdf')
+    public function publicUpload($fileName, $filePath, $options = '', $bucketName = 'contractsign')
     {
-        $options = $options ? ['ContentType' => "application/{$options}"] : [];
+        $options = $options ? ['ContentType' => "{$options}"] : [];
+
         return $this->ossClient->setBucket($bucketName)->uploadFile($fileName, $filePath, $options);
     }
 
-    public function getPublicUrl($ossKey, $bucketName = 'ingym-pdf')
+    public function getPublicUrl($ossKey, $bucketName = 'contractsign')
     {
         $url = $this->ossClient->setBucket($bucketName)->getPublicUrl($ossKey);
 
@@ -40,6 +41,7 @@ class LaravelOSS
     public function __construct()
     {
         $this->config = array_values(current(func_get_args()));
+        $this->getInstance();
     }
 
 
