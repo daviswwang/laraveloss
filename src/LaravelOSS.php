@@ -19,7 +19,7 @@ class LaravelOSS
 
     protected function getInstance()
     {
-        return $this->ossClient = AliyunOSS::boot(...$this->config);
+        $this->ossClient = AliyunOSS::boot(...$this->config);
     }
 
 
@@ -39,7 +39,7 @@ class LaravelOSS
 
     public function __construct()
     {
-        $this->config = func_get_args();
+        $this->config = array_values(current(func_get_args()));
     }
 
 
