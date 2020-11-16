@@ -3,7 +3,7 @@ laravel OSS 扩展包
 ```
 一款基于阿里云官方oss SDK 适用于laravel的上传扩展包
 ```
-##Install via composer
+## Install via composer
 ```
 composer require daviswwang/laraveloss
 ```
@@ -13,9 +13,12 @@ php artisan vendor:public --provider="Daviswwang\laraveloss\LaravelServiceProvid
 ```
 You should now have a config/oss.php file that allows you to configure the basics of this package.
 
-##Use it like this
+## Use it like this
+```
+use Daviswwang\LaravelOSS\Facades\LaravelOSS;
 
-
+LaravelOSS::upload('webGF.png', storage_path('pdf/webGF.png'), 'image/png')
+```
 
 
 
