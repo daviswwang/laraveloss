@@ -9,7 +9,7 @@ composer require daviswwang/laraveloss
 ```
 Run the following command to publish the package config file
 ```
-php artisan vendor:public --provider="Daviswwang\laraveloss\LaravelServiceProvider"
+php artisan vendor:public --provider="Daviswwang\LaravelOSS\LaravelServiceProvider"
 ```
 You should now have a config/oss.php file that allows you to configure the basics of this package.
 
@@ -17,7 +17,7 @@ You should now have a config/oss.php file that allows you to configure the basic
 ```
 use Daviswwang\LaravelOSS\Facades\LaravelOSS;
 
-LaravelOSS::upload('webGF.png', storage_path('pdf/webGF.png'), 'image/png')
+$url = LaravelOSS::upload('webGF.png', storage_path('pdf/webGF.png'), 'image/png')
 ```
 
 
