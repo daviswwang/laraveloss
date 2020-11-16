@@ -9,7 +9,7 @@ return [
     'default' => [
         'city' => '上海',
         'networkType' => '经典网络',
-        'isInternal' => true,
+        'isInternal' => false,
         'AccessKeyId' => '',
         'AccessKeySecret' => ''
     ],
