@@ -24,7 +24,7 @@
       ]
     },
     "aliases": {
-      "Weather": "Daviswwang\\LaravelOSS\\Facades\\LaravelOSS"
+      "LaravelOSS": "Daviswwang\\LaravelOSS\\Facades\\LaravelOSS"
     }
 
   }
