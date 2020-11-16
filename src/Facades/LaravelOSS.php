@@ -6,6 +6,8 @@
  * Time: 09:46
  */
 
+namespace Daviswwang\LaravelOSS\Facades;
+
 use Illuminate\Support\Facades\Facade;
 
 class LaravelOSS extends Facade

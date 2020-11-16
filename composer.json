@@ -22,6 +22,9 @@
       "providers": [
         "Daviswwang\\LaravelOSS\\LaravelServiceProvider"
       ]
+    },
+    "aliases": {
+      "Weather": "Daviswwang\\LaravelOSS\\Facades\\LaravelOSS"
     }
 
   }
