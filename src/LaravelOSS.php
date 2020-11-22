@@ -17,12 +17,23 @@ class LaravelOSS
 
     protected $config = [];
 
+    protected $bucketName;
+
 
     protected function getInstance()
     {
         $this->ossClient = AliyunOSS::boot(...$this->config);
     }
 
+    public function setDefaultBucketName($bucketName)
+    {
+        $this->bucketName = $bucketName;
+    }
+
+    public function getDefaultBucketName()
+    {
+        return $this->bucketName;
+    }
 
     public function publicUpload($fileName, $filePath, $options = '', $bucketName = 'contractsign')
     {
