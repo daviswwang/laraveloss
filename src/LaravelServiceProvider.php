@@ -19,9 +19,8 @@ class LaravelServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(LaravelOSS::class, function () {
-            return new LaravelOSS(config('oss.default'));
+            return new LaravelOSS(...[array_values(current(config('oss.default'))), config('oss.bucketName')]);
         });
-
         $this->app->alias(LaravelOSS::class, 'laraveloss');
     }
 
@@ -33,7 +32,6 @@ class LaravelServiceProvider extends ServiceProvider
     public function boot()
     {
         $path = realpath(__DIR__ . '/Config/AliConfig.php');
-
         $this->publishes([$path => config_path('oss.php')], 'config');
         $this->mergeConfigFrom($path, 'laraveloss');
     }

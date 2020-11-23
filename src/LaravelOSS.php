@@ -74,9 +74,10 @@ class LaravelOSS
     }
 
 
-    public function __construct()
+    public function __construct($config, $bucketName)
     {
-        $this->config = array_values(current(func_get_args()));
+        $this->setDefaultBucketName($bucketName);
+        $this->config = $config;
         $this->getInstance();
     }
 
