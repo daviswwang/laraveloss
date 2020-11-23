@@ -10,6 +10,11 @@ namespace Daviswwang\LaravelOSS\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * Class LaravelOSS
+ * @method static bool upload(string $ability, array | mixed $arguments = [])
+ * @package Daviswwang\LaravelOSS\Facades
+ */
 class LaravelOSS extends Facade
 {
     protected static function getFacadeAccessor()
