@@ -35,26 +35,32 @@ class LaravelOSS
         return $this->bucketName;
     }
 
-    public function publicUpload($fileName, $filePath, $options = '', $bucketName = 'contractsign')
+    public function publicUpload($fileName, $filePath, $options = '', $bucketName = '')
     {
         $options = $options ? ['ContentType' => "{$options}"] : [];
 
-        return $this->ossClient->setBucket($bucketName)->uploadFile($fileName, $filePath, $options);
+        if ($bucketName) $this->setDefaultBucketName($bucketName);
+
+        return $this->ossClient->setBucket($this->bucketName)->uploadFile($fileName, $filePath, $options);
     }
 
-    public function getPublicUrl($ossKey, $bucketName = 'contractsign')
+    public function getPublicUrl($ossKey, $bucketName = '')
     {
-        $url = $this->ossClient->setBucket($bucketName)->getPublicUrl($ossKey);
+        if ($bucketName) $this->setDefaultBucketName($bucketName);
+
+        $url = $this->ossClient->setBucket($this->bucketName)->getPublicUrl($ossKey);
 
         return str_replace("http://", "https://", $url);
     }
 
-    //上传文件并获取url
-    public function upload($fileName, $filePath, $options = '', $bucketName = 'contractsign')
+    //上传文件并获取url contractsign
+    public function upload($fileName, $filePath, $options = '', $bucketName = '')
     {
-        $this->publicUpload($fileName, $filePath, $options, $bucketName);
+        if ($bucketName) $this->setDefaultBucketName($bucketName);
 
-        return $this->getPublicUrl($fileName, $bucketName);
+        $this->publicUpload($fileName, $filePath, $options, $this->bucketName);
+
+        return $this->getPublicUrl($fileName, $this->bucketName);
     }
 
     public function createBucket($bucketName)
@@ -70,7 +76,9 @@ class LaravelOSS
     // 获取私有文件的URL，并设定过期时间，如 \DateTime('+1 day')
     public function getPrivateObjectURLWithExpireTime($bucketName, $ossKey, DateTime $expire_time)
     {
-        return $this->ossClient->setBucket($bucketName)->getUrl($ossKey, $expire_time);
+        if ($bucketName) $this->setDefaultBucketName($bucketName);
+
+        return $this->ossClient->setBucket($this->bucketName)->getUrl($ossKey, $expire_time);
     }
 
 
