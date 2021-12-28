@@ -1,7 +1,7 @@
 laravel OSS 扩展包
 ===============================
 ```
-一款基于阿里云官方oss SDK 适用于laravel 5.X的上传扩展包
+一款基于阿里云官方oss SDK 适用于laravel 5.x的上传扩展包
 ```
 ## Install via composer
 ```
